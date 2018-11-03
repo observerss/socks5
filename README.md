@@ -1,6 +1,11 @@
 # socks5
 a minimal async socks server that can switch outgoing ip
 
+- required: curio
+```bash
+pip install curio
+```
+
 - python 3.6+ only
 
 ```bash
