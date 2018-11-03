@@ -57,7 +57,7 @@ class SocksProxy:
         if address_type == 1:  # IPv4
             address = socket.inet_ntoa(await conn.recv(4))
         elif address_type == 3:  # Domain name
-            domain_length = ord(await conn.recv(1)[0])
+            domain_length = ord(await conn.recv(1))
             address = await conn.recv(domain_length)
 
         port = struct.unpack('!H', await conn.recv(2))[0]
@@ -77,8 +77,7 @@ class SocksProxy:
 
             addr = struct.unpack("!I", socket.inet_aton(bind_address[0]))[0]
             port = bind_address[1]
-            reply = struct.pack("!BBBBIH", SOCKS_VERSION, 0, 0, address_type,
-                                addr, port)
+            reply = struct.pack("!BBBBIH", SOCKS_VERSION, 0, 0, 1, addr, port)
 
         except Exception as err:
             logging.error(err)
