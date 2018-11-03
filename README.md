@@ -1,5 +1,5 @@
 # socks5
-an async socks server that can switch outgoing ip
+a minimal async socks server that can switch outgoing ip
 
 - python 3.6+ only
 
